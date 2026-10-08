@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ app_name }} - Comic Preview
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <div class="brand">
+        Comic<span>Craft</span>
+    </div>
+
+    <a
+        class="header-link"
+        href="/"
+    >
+        Create New
+    </a>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="hero compact">
+
+        <p class="eyebrow">
+            YOUR COMIC IS READY
+        </p>
+
+        <h1>
+            {{ character_name }}'s Adventure
+        </h1>
+
+        <p>
+            Review each generated panel below.
+        </p>
+
+    </section>
+
+
+    <div class="actions">
+
+        <a href="{{ comic.pdf_path }}" class="btn btn-primary" download>
+            Download PDF
+        </a>
+
+
+        <a
+            class="secondary-btn"
+            href="/"
+        >
+            Create Another
+        </a>
+
+    </div>
+
+
+    <section class="comic-list">
+
+
+        {% for panel in layout %}
+
+
+        <article class="panel-card">
+
+
+            <div class="panel-number">
+
+                PANEL {{ panel.panel_number }}
+
+            </div>
+
+
+            <h2>
+
+                {{ panel.title }}
+
+            </h2>
+
+
+            <img
+                class="comic-image"
+                src="{{ panel.image_path }}"
+                alt="Comic illustration"
+            >
+
+
+            <p class="scene">
+
+                <em>
+                    {{ panel.scene_description }}
+                </em>
+
+            </p>
+
+
+            {% if panel.caption %}
+
+            <p class="caption">
+
+                {{ panel.caption }}
+
+            </p>
+
+            {% endif %}
+
+
+            <div class="story-text">
+
+                <p>
+
+                    {{ panel.narration }}
+
+                </p>
+
+
+                {% if panel.dialogue %}
+
+                <blockquote>
+
+                    {{ panel.dialogue }}
+
+                </blockquote>
+
+                {% endif %}
+
+            </div>
+
+
+            <details>
+
+                <summary>
+                    View image prompt
+                </summary>
+
+                <p>
+                    {{ panel.image_prompt }}
+                </p>
+
+            </details>
+
+
+        </article>
+
+
+        {% endfor %}
+
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>

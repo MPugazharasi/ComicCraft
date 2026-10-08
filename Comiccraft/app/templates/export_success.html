@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ app_name }} - Export
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<main class="center-page">
+
+
+    <section class="success-card">
+
+
+        <div class="success-icon">
+
+            ✓
+
+        </div>
+
+
+        <h1>
+
+            Comic Exported Successfully
+
+        </h1>
+
+
+        <p>
+
+            Your ComicCraft PDF is ready.
+
+        </p>
+
+
+        {% if pdf_url %}
+
+        <a
+            class="primary-btn link-btn"
+            href="{{ pdf_url }}"
+            download
+        >
+
+            Download PDF
+
+        </a>
+
+        {% endif %}
+
+
+        <a
+            class="secondary-btn"
+            href="/"
+        >
+
+            Create a New Comic
+
+        </a>
+
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>
